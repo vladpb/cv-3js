@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { EventEmitter } from "events";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { DRACOLoader } from "three/examples/jsm/loaders/dracoloader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import Experience from "../Experience";
 
 
