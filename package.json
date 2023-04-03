@@ -12,5 +12,9 @@
     "events": "^3.3.0",
     "three": "^0.150.1",
     "vite": "^4.2.0"
+  },
+  "dependencies": {
+    "gsap": "^3.11.5",
+    "npm-check-updates": "^16.10.0"
   }
 }

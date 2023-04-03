@@ -33,6 +33,7 @@ export default class Renderer {
     }
 
     update(){
-        this.renderer.render(this.scene, this.camera.perspectiveCamera);
+        //this.renderer.setViewport(0 , 0, this.width, this.sizes.height);
+        this.renderer.render(this.scene, this.camera.orthographicCamera);
     }
 }

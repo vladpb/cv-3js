@@ -8,7 +8,8 @@ export default class Camera {
         this.sizes = this.experience.sizes;
         this.scene = this.experience.scene;
         this.canvas = this.experience.canvas;
-        //console.log(this.sizes, this.scene, this.canvas)
+        console.log(this.sizes, this.scene, this.canvas)
+
         this.createPerspectiveCamera();
         this.createOrthographicCamera();
         this.setOrbitControls();
@@ -23,29 +24,30 @@ export default class Camera {
             );
             this.scene.add(this.perspectiveCamera);
 
-            this.perspectiveCamera.position.z = 5;
+            this.perspectiveCamera.position.x = 29;
+            this.perspectiveCamera.position.y = 14;
+            this.perspectiveCamera.position.z = 12;
     }
+
     createOrthographicCamera(){
-        this.frustrum = 5;
         this.orthographicCamera = new THREE.OrthographicCamera(
             (-this.sizes.aspect * this.sizes.frustrum) / 2,
             (this.sizes.aspect * this.sizes.frustrum) / 2,
             this.sizes.frustrum / 2,
             -this.sizes.frustrum / 2,
-            -110,
-            100
+            -50,
+            50
         );
 
-        // 6.5
-        this.orthographicCamera.position.y = 5.65;
+        this.orthographicCamera.position.y = 6.5;
         this.orthographicCamera.position.z = 10;
-        this.orthographicCamera.rotation.x = -Math.PI / 6;
+        this.orthographicCamera.rotation.x = -Math.PI / 8;
 
+        console.log(this.orthographicCamera);
         this.scene.add(this.orthographicCamera);
 
-
-        this.helper = new THREE.CameraHelper(this.orthographicCamera);
-        this.scene.add(this.helper);
+        //this.helper = new THREE.CameraHelper(this.orthographicCamera);
+        //this.scene.add(this.helper);
 
         
         const size = 20;
@@ -59,12 +61,9 @@ export default class Camera {
     }
 
     setOrbitControls() {
-        this.orbitControls = new OrbitControls(this.perspectiveCamera, this.canvas);
-        this.orbitControls.enableDamping = true;
-        this.orbitControls.dampingFactor = 0.25;
-        this.orbitControls.enableZoom = true;
-        this.orbitControls.enablePan = true;
-        this.orbitControls.enableRotate = true;
+        this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
+        this.controls.enableDamping = true;
+        this.controls.enableZoom = false;
     }
 
     resize(){
@@ -84,6 +83,13 @@ export default class Camera {
     }
 
     update(){
+       // console.log(this.perspectiveCamera.position)
+        this.controls.update();
 
+       // this.helper.matrixWorldNeedsUpdate = true;
+       // this.helper.update();
+        //console.log(this.orthographicCamera.position);
+        //this.helper.position.copy(this.orthographicCamera.position);
+        //this.helper.rotation.copy(this.orthographicCamera.rotation);
     }
 }
