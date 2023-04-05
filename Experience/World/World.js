@@ -25,6 +25,16 @@ export default class World extends EventEmitter {
             //this.controls = new Controls();
            // console.log("created room");
         });
+
+        this.theme.on("switch", (theme) => {
+            this.switchTheme(theme);
+        });
+    }
+
+    switchTheme(theme) {
+        if (this.environment) {
+            this.environment.switchTheme(theme);
+        }
     }
 
     resize(){}

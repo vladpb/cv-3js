@@ -2,7 +2,9 @@ import * as THREE from "three";
 import Experience from "../Experience";
 import GSAP from "gsap";
 import Time from "../Utils/Time";
-
+import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
+import GUI from 'lil-gui'; 
+import { TransformControls } from 'three/addons/controls/TransformControls.js';
 
 export default class Room {
     constructor() {
@@ -14,6 +16,7 @@ export default class Room {
         this.actualRoom = this.room.scene;
         //console.log(this.actualRoom);
 
+
         this.lerp = {
             current: 0,
             target: 0,
@@ -23,8 +26,10 @@ export default class Room {
         this.setModel();
         //this.setAnimation();
         this.onMouseMove();
+        this.setLights();
     }
-    
+
+
     setModel() {
 
         this.actualRoom.children.forEach((child) => {
@@ -45,10 +50,12 @@ export default class Room {
                 child.material.color.set(0x4e4a4e);
                 child.material.ior = 3;
                 child.material.transmission = 1;
-                child.material.opacity = 1;
+                child.material.opacity = 0.1;
             };
             
-           /*  pt videouri monitoare
+
+
+            
 
             if(child.name === "monitor") {
                 child.material = new THREE.MeshBasicMaterial({
@@ -62,13 +69,31 @@ export default class Room {
                 });
             }
             
-            */
 
             //console.log(child);
-        });
 
-        this.scene.add(this.actualRoom);
-        this.actualRoom.scale.set(0.5, 0.5, 0.5);
+            this.scene.add(this.actualRoom);
+            this.actualRoom.scale.set(0.5, 0.5, 0.5);
+        });
+    }
+
+    setLights() {
+            
+        const width = 0.36;
+        const height = 0.18;
+        const intensity = 6;
+        const rectLight = new THREE.RectAreaLight( 0xc33af8, intensity,  width, height );
+        rectLight.position.set( -1.21 , 1.2 , -0.7 );
+        rectLight.rotation.y = -Math.PI / 1.4; 
+        this.actualRoom.add( rectLight )
+
+        const rectLight2 = new THREE.RectAreaLight( 0xaf2bfa, intensity,  width, height );
+        rectLight2.position.set( -0.5 , 1.2 , -1.4 );
+        rectLight2.rotation.y = Math.PI / 0.82; 
+        this.actualRoom.add( rectLight2 )
+        
+        //const rectLightHelper = new RectAreaLightHelper( rectLight2 );
+        //rectLight.add( rectLightHelper );
     }
 
     /* Animatie

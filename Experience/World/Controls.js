@@ -15,27 +15,22 @@ export default class Controls {
         this.room = this.experience.world.room.actualRoom;
         GSAP.registerPlugin(ScrollTrigger);
 
-        this.setPath();
+        this.setScrollTrigger();
     }
-
-    setPath() {
-        console.log("this.room");
-        this.timeline = new GSAP.timeline();
-        this.timeline.to(this.room.position, {
-            x: () =>{ 
-                return this.sizes.width * 0.00012;
+    setScrollTrigger() {
+        ScrollTrigger.matchMedia({
+            //desktop
+            "(min-width: 969px)": function() {
+                console.log("desktop scroll trigger");
             },
 
-            scrollTrigger:{
-                trigger:".first-move",
-                markers: true,
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 0.6,
-                invalidateOnRefresh: true,
-            }
-        });
+            "(max-width: 968px)": function() {
+            },
+            // all 
+            "all": function() {},
+        }); 
     }
+
 
     resize() {}
 

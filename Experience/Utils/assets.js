@@ -5,8 +5,6 @@ export default [
         path: "/models/birou.glb",
     },
     
-    /*
-
     {
         name: "screen1",
         type: "videoTexture",
@@ -18,6 +16,4 @@ export default [
         type: "videoTexture",
         path: "/textures/video2.mp4",
     },
-
-    */
 ];
