@@ -14,6 +14,7 @@ export default class Room {
         this.time = this.experience.time;
         this.room = this.resources.items.room;
         this.actualRoom = this.room.scene;
+        this.roomChildren = {}
         //console.log(this.actualRoom);
 
 
@@ -44,31 +45,41 @@ export default class Room {
                 });
             };
 
-            if(child.name === "pc") {
-                child.material = new THREE.MeshPhysicalMaterial();
-                child.material.roughness = 0;
-                child.material.color.set(0x4e4a4e);
-                child.material.ior = 3;
-                child.material.transmission = 1;
-                child.material.opacity = 0.1;
+            //console.log(child);
+
+            if(child.name === "PC") {
+                child.children[4].material = new THREE.MeshPhysicalMaterial();
+                child.children[4].material.roughness = 0;
+                child.children[4].material.color.set(0x4e4a4e);
+                child.children[4].material.ior = 3;
+                child.children[4].material.transmission = 1;
+                child.children[4].material.opacity = 0.1;
             };
             
 
 
             
 
-            if(child.name === "monitor") {
-                child.material = new THREE.MeshBasicMaterial({
+            if(child.name === "monitor1") {
+                child.children[2].material = new THREE.MeshBasicMaterial({
                     map: this.resources.items.screen1,
                 });
             }
 
-            if(child.name === "monitorwide") {
-                child.material = new THREE.MeshBasicMaterial({
+            if(child.name === "monitor2") {
+                child.children[2].material = new THREE.MeshBasicMaterial({
                     map: this.resources.items.screen2,
                 });
             }
             
+            child.scale.set(0, 0, 0);
+            if(child.name === "Cube") {
+                //child.scale.set(1, 1, 1);
+                child.position.set(0, 1, 0)
+                child.rotation.y = Math.PI / 4;
+            }
+
+            this.roomChildren[child.name.toLowerCase()] = child;
 
             //console.log(child);
 
@@ -81,7 +92,7 @@ export default class Room {
             
         const width = 0.36;
         const height = 0.18;
-        const intensity = 6;
+        const intensity = 3;
         const rectLight = new THREE.RectAreaLight( 0xc33af8, intensity,  width, height );
         rectLight.position.set( -1.21 , 1.2 , -0.7 );
         rectLight.rotation.y = -Math.PI / 1.4; 
@@ -92,6 +103,8 @@ export default class Room {
         rectLight2.rotation.y = Math.PI / 0.82; 
         this.actualRoom.add( rectLight2 )
         
+        this.roomChildren['rectLight'] = rectLight;
+
         //const rectLightHelper = new RectAreaLightHelper( rectLight2 );
         //rectLight.add( rectLightHelper );
     }
