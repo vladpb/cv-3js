@@ -24,7 +24,7 @@ export default class Controls {
 
         GSAP.registerPlugin(ScrollTrigger);
 
-        document.querySelector(".page").style.overflow = "visible";
+        //document.querySelector(".page").style.overflow = "visible";
 
         if (
             !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -35,6 +35,8 @@ export default class Controls {
         }
         this.setScrollTrigger();
     }
+
+
 
     setupASScroll() {
         // https://github.com/ashthornton/asscroll

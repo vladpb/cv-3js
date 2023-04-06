@@ -11,6 +11,7 @@ import Renderer from "./Renderer";
 import Preloader from "./Preloader";
 
 import World from "./World/World";
+import Controls from "./World/Controls";
 
 
 export default class Experience {
@@ -31,6 +32,10 @@ export default class Experience {
        this.world = new World();
        this.preloader = new Preloader();
 
+       this.preloader.on("enablecontrols", () => {
+        this.controls = new Controls();
+       });
+
        this.sizes.on("resize", ()=> {
         this.resize();
        });
@@ -40,15 +45,16 @@ export default class Experience {
        });
     }
 
-    resize(){
+    resize() {
         this.camera.resize();
         this.world.resize();
         this.renderer.resize();
     }
 
-    update(){
+    update() {
         this.camera.update();
         this.world.update();
         this.renderer.update();
+        this.preloader.update();
     }
 }
