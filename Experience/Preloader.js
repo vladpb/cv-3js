@@ -31,8 +31,9 @@ export default class Preloader extends EventEmitter {
         convert(document.querySelector(".intro-text"))
         convert(document.querySelector(".hero-main-title"))
         convert(document.querySelector(".hero-main-description"))
-        //convert(document.querySelector(".hero-second-subheading"))
-        //convert(document.querySelector(".intro-text"))
+        convert(document.querySelector(".hero-second-subheading"));
+        convert(document.querySelector(".second-sub"));
+        
         this.room = this.experience.world.room.actualRoom;
         this.roomChildren = this.experience.world.room.roomChildren;
         console.log(this.roomChildren);
@@ -41,37 +42,49 @@ export default class Preloader extends EventEmitter {
     firstIntro() {
         return new Promise((resolve) => {
         this.timeline = new GSAP.timeline();
-        
+        this.timeline.set(".animatedis", { y: 0, yPercent: 100 });
+        this.timeline.to(".preloader", {
+            opacity: 0,
+            delay: 1,
+            onComplete: () => {
+                document
+                    .querySelector(".preloader")
+                    .classList.add("hidden");
+            },
+        });
         if(this.device === "desktop") {
         this.timeline.to(this.roomChildren.cube.scale, {
             x: 1.4,
             y: 1.4,
             z: 1.4,
-            duration: 1,
-            ease: "power1.inOut"
-        }).to(this.room.position, {
+            ease: "back.out(2.5)",
+            duration: 0.7,
+        })
+        .to(this.room.position, {
             x: -1,
             ease: "power1.out",
-            duration: 1,
+            duration: 0.7,
             //onComplete: resolve,
         });
     }else {
-        this.timeline.to(this.roomChildren.cube.scale, {
+        this.timeline
+        .to(this.roomChildren.cube.scale, {
             x: 1.4,
             y: 1.4,
             z: 1.4,
-            duration: 1,
+            duration: 0.7,
             ease: "back.out(2.5)",
-        }).to(this.room.position, {
+        })
+        .to(this.room.position, {
             z: -1,
             ease: "power1.out",
-            duration: 1,
+            duration: 0.7,
             //onComplete: resolve,
         });
     }
         this.timeline
             .to(".intro-text .animatedis", {
-                yPercent: -100,
+                yPercent: 0,
                 stagger: 0.05,
                 ease: "back.out(1.8)",
             })
@@ -102,53 +115,107 @@ export default class Preloader extends EventEmitter {
         "fadeout"
         )
         .to(".arrow-svg-wrapper", {
-            opacity: 1,
+            opacity: 0,
         },
         "fadeout"
         )
-        .to(this.roomChildren.cube.scale, {
-            x: 0,
-            y: 0,
-            z: 0,
-            duration: 1,
-            ease: "power1.inOut"
-        })
-        .to(this.roomChildren.cube.rotation, {
-            y: 2*Math.PI + Math.PI / 4
-            })
-            .to(this.roomChildren.cube.scale, {
+        .to(
+            this.room.position,
+            {
+                x: 0,
+                y: 0,
+                z: 0,
+                ease: "power1.out",
+            },
+            "same"
+        )
+        .to(
+            this.roomChildren.cube.rotation,
+            {
+                y: 2 * Math.PI + Math.PI / 4,
+            },
+            "same"
+        )
+        .to(
+            this.roomChildren.cube.scale,
+            {
                 x: 10,
                 y: 10,
                 z: 10,
-            })
-            .to(this.camera.orthographicCamera.position, {
-                y: 5.65,
-            })
-            .to(this.roomChildren.cube.position, {
-                x: 0.031249,
-                y: 1.6096,
-                z: -0.21056,
             },
             "same"
-            )
-            .set(this.roomChildren.body.scale, {
-                x: 1,
-                y: 1,
-                z: 1,
-            },).to(this.roomChildren.cube.scale, {
+        )
+        .to(
+            this.camera.orthographicCamera.position,
+            {
+                y: 6.5,
+            },
+            "same"
+        )
+        .to(
+            this.roomChildren.cube.position,
+            {
+                x: 0.638711,
+                y: 8.5618,
+                z: 1.3243,
+            },
+            "same"
+        )
+        .set(this.roomChildren.body.scale, {
+            x: 1,
+            y: 1,
+            z: 1,
+        })
+        .to(
+            this.roomChildren.cube.scale,
+            {
                 x: 0,
                 y: 0,
                 z: 0,
                 duration: 1,
-            }, "introtext").to(".hero-main-title .animatedis", {
-                yPercent: -100,
+            },
+            "introtext"
+        )
+        .to(
+            ".hero-main-title .animatedis",
+            {
+                yPercent: 0,
                 stagger: 0.07,
                 ease: "back.out(1.7)",
-            }, "introtext").to(".hero-main-description .animatedis", {
-                yPercent: -100,
+            },
+            "introtext"
+        )
+        .to(
+            ".hero-main-description .animatedis",
+            {
+                yPercent: 0,
                 stagger: 0.07,
                 ease: "back.out(1.7)",
-            });
+            },
+            "introtext"
+        )
+        .to(
+            ".first-sub .animatedis",
+            {
+                yPercent: 0,
+                stagger: 0.07,
+                ease: "back.out(1.7)",
+            },
+            "introtext"
+        )
+        .to(
+            ".second-sub .animatedis",
+            {
+                yPercent: 0,
+                stagger: 0.07,
+                ease: "back.out(1.7)",
+            },
+            "introtext"
+        )
+        .to(".arrow-svg-wrapper", {
+            opacity: 1,
+            onComplete: resolve,
+        });
 
     })};
 
@@ -168,7 +235,7 @@ export default class Preloader extends EventEmitter {
         let currentY = e.touches[0].clientY;
         let difference = this.initialY - currentY;
         if(difference > 0) {
-            console.log("swipe");
+            //console.log("swipe");
             this.removeEventListeners();
             this.playSecondIntro();
         }
@@ -182,22 +249,20 @@ export default class Preloader extends EventEmitter {
     }
 
     async playIntro() {
+        this.scaleFlag = true;
         await this.firstIntro();
         this.moveFlag = true;
         //console.log("waited");
-        this.moveFlag = true;
         this.scrollOnceEvent = this.onScroll.bind(this);
         this.touchStart = this.onTouch.bind(this);
         this.touchMove = this.onTouchMove.bind(this);
         window.addEventListener("wheel", this.scrollOnceEvent);
         window.addEventListener("touchstart", this.touchStart);
         window.addEventListener("touchmove", this.touchMove);
-        this.scaleFlag = true;
 }
 
     async playSecondIntro() {
         this.moveFlag = false;
-        this.scaleFlag = true;
         await this.secondIntro();
         this.scaleFlag = false;
         this.emit("enablecontrols");
@@ -212,8 +277,10 @@ export default class Preloader extends EventEmitter {
 }
 
     scale() {
+        this.roomChildren.rectLight.width = 0;
+        this.roomChildren.rectLight.height = 0;
         if(this.device === "desktop") {
-            this.room.scale.set(0.5, 0.5, 0.5)
+            this.room.scale.set(0.6, 0.6, 0.6)
         }else {
             this.room.scale.set(0.35, 0.35, 0.35);
         }

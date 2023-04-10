@@ -23,7 +23,6 @@ export default class Room {
             target: 0,
             ease: 0.1,
         };
-
         this.setModel();
         //this.setAnimation();
         this.onMouseMove();
@@ -83,8 +82,11 @@ export default class Room {
 
             //console.log(child);
 
+
+
+
             this.scene.add(this.actualRoom);
-            this.actualRoom.scale.set(0.5, 0.5, 0.5);
+            this.actualRoom.scale.set(0.6, 0.6, 0.6);
         });
     }
 
