@@ -13,7 +13,7 @@ export default class Sizes extends EventEmitter {
             console.log("mobile");
         } else {
             this.device = "desktop";
-            console.log("desktop");
+            //console.log("desktop");
         }
 
         window.addEventListener("resize", () => {

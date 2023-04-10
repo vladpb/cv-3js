@@ -31,10 +31,6 @@ export default class Environments {
        });
     }
 
-    setModel() {
-        this.scene.add(this.actualRoom);
-    }
-
     setSunlight() {
         this.sunLight = new THREE.DirectionalLight("#ffffff", 2);
         this.sunLight.castShadow = true;

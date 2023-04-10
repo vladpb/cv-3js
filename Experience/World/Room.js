@@ -56,9 +56,6 @@ export default class Room {
             };
             
 
-
-            
-
             if(child.name === "monitor1") {
                 child.children[2].material = new THREE.MeshBasicMaterial({
                     map: this.resources.items.screen1,
@@ -73,7 +70,7 @@ export default class Room {
             
             child.scale.set(0, 0, 0);
             if(child.name === "Cube") {
-                //child.scale.set(1, 1, 1);
+                child.scale.set(0.6, 0.6, 0.6);
                 child.position.set(0, 1, 0)
                 child.rotation.y = Math.PI / 4;
             }
@@ -107,7 +104,10 @@ export default class Room {
         
         this.roomChildren['rectLight'] = rectLight;
 
-        //const rectLightHelper = new RectAreaLightHelper( rectLight2 );
+        this.scene.add(this.actualRoom);
+            this.actualRoom.scale.set(0.6, 0.6, 0.6);
+
+        //const rectLightHelper = new RectAreaLightHelper( rectLight );
         //rectLight.add( rectLightHelper );
     }
 

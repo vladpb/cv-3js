@@ -52,9 +52,12 @@ export default class Experience {
     }
 
     update() {
+        this.preloader.update();
         this.camera.update();
         this.world.update();
         this.renderer.update();
-        this.preloader.update();
+        if (this.controls) {
+            this.controls.update();
+        }
     }
 }

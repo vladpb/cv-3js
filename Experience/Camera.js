@@ -58,9 +58,9 @@ export default class Camera {
     }
 
     setOrbitControls() {
-        this.orbitControls = new OrbitControls(this.perspectiveCamera, this.canvas);
-        this.orbitControls.enableDamping = true;
-        this.orbitControls.enableZoom = false;
+        this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
+        this.controls.enableDamping = true;
+        this.controls.enableZoom = false;
     }
 
     resize(){
@@ -80,6 +80,6 @@ export default class Camera {
     }
 
     update(){
-
+        this.controls.update();
     }
 }

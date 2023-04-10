@@ -8,12 +8,12 @@ export default [
     {
         name: "screen1",
         type: "videoTexture",
-        path: "/textures/video1.mp4",
+        path: "public/textures/video1.mp4",
     },
 
     {
         name: "screen2",
         type: "videoTexture",
-        path: "/textures/video2.mp4",
+        path: "public/textures/video2.mp4",
     },
 ];

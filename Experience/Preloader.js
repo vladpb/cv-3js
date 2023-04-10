@@ -53,7 +53,8 @@ export default class Preloader extends EventEmitter {
             },
         });
         if(this.device === "desktop") {
-        this.timeline.to(this.roomChildren.cube.scale, {
+        this.timeline
+        .to(this.roomChildren.cube.scale, {
             x: 1.4,
             y: 1.4,
             z: 1.4,
@@ -107,16 +108,20 @@ export default class Preloader extends EventEmitter {
         this.secondTimeline = new GSAP.timeline();
         
         this.secondTimeline
-        .to(".intro-text .animatedis", {
+        .to(
+            ".intro-text .animatedis", 
+            {
             yPercent: 100,
             stagger: 0.05,
             ease: "back.in(1.8)",
-        },
+            },
         "fadeout"
         )
-        .to(".arrow-svg-wrapper", {
+        .to(
+            ".arrow-svg-wrapper", 
+            {
             opacity: 0,
-        },
+            },
         "fadeout"
         )
         .to(
@@ -161,11 +166,13 @@ export default class Preloader extends EventEmitter {
             },
             "same"
         )
-        .set(this.roomChildren.body.scale, {
-            x: 1,
-            y: 1,
-            z: 1,
-        })
+        .set(this.roomChildren.room.scale, 
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+            },
+            )
         .to(
             this.roomChildren.cube.scale,
             {
@@ -173,9 +180,10 @@ export default class Preloader extends EventEmitter {
                 y: 0,
                 z: 0,
                 duration: 1,
+                ease: "power2.in(0.5)",
             },
             "introtext"
-        )
+            )
         .to(
             ".hero-main-title .animatedis",
             {
@@ -212,6 +220,295 @@ export default class Preloader extends EventEmitter {
             },
             "introtext"
         )
+        .to(
+            this.roomChildren.parchet.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.covor.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.pat.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.birou.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.monitor1.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.monitor2.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.rafts.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.carteb.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.lampa.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.pc.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.mouse.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.tastatura.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.tablomiley.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.rama911.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.carti2.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.casti.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.raftcontrollere.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.cutie.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.cafea.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.carti1.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.cosdegunoi.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.eucumiley.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.planta.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.canacreioane.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.controller1.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.controller2.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.suportscaun.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.scaun.scale,
+            {
+                x: 1,
+                y: 1,
+                z: 1,
+                ease: "back.out(1.7)",
+                duration: 0.5,
+            }
+        )
+        .to(
+            this.roomChildren.scaun.rotation,
+            {
+                y: 3 * Math.PI / 3 + 1,
+                ease: "power2.out",
+                duration: 1,
+            },
+        )
+        
         .to(".arrow-svg-wrapper", {
             opacity: 1,
             onComplete: resolve,

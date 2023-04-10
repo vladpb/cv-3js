@@ -24,7 +24,7 @@ export default class Controls {
 
         GSAP.registerPlugin(ScrollTrigger);
 
-        //document.querySelector(".page").style.overflow = "visible";
+        document.querySelector(".page").style.overflow = "visible";
 
         if (
             !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -373,14 +373,15 @@ export default class Controls {
                 });
 
                 this.room.children.forEach((child) => {
-                    if (child.name === "Mini_Floor") {
-                        this.first = GSAP.to(child.position, {
-                            x: -5.44055,
-                            z: 13.6135,
+                    if (child.name === "platforma") {
+                        this.first = GSAP.to(child.scale, {
+                            x: 1,
+                            y: 1,
+                            z: 1,
                             duration: 0.3,
                         });
                     }
-                    if (child.name === "Mailbox") {
+                    if (child.name === "pa1") {
                         this.second = GSAP.to(child.scale, {
                             x: 1,
                             y: 1,
@@ -388,7 +389,7 @@ export default class Controls {
                             duration: 0.3,
                         });
                     }
-                    if (child.name === "Lamp") {
+                    if (child.name === "pa2") {
                         this.third = GSAP.to(child.scale, {
                             x: 1,
                             y: 1,
@@ -397,7 +398,7 @@ export default class Controls {
                             duration: 0.3,
                         });
                     }
-                    if (child.name === "FloorFirst") {
+                    if (child.name === "pa3") {
                         this.fourth = GSAP.to(child.scale, {
                             x: 1,
                             y: 1,
@@ -406,7 +407,7 @@ export default class Controls {
                             duration: 0.3,
                         });
                     }
-                    if (child.name === "FloorSecond") {
+                    if (child.name === "floare") {
                         this.fifth = GSAP.to(child.scale, {
                             x: 1,
                             y: 1,
@@ -414,35 +415,8 @@ export default class Controls {
                             duration: 0.3,
                         });
                     }
-                    if (child.name === "FloorThird") {
+                    if (child.name === "cutiepostala") {
                         this.sixth = GSAP.to(child.scale, {
-                            x: 1,
-                            y: 1,
-                            z: 1,
-                            ease: "back.out(2)",
-                            duration: 0.3,
-                        });
-                    }
-                    if (child.name === "Dirt") {
-                        this.seventh = GSAP.to(child.scale, {
-                            x: 1,
-                            y: 1,
-                            z: 1,
-                            ease: "back.out(2)",
-                            duration: 0.3,
-                        });
-                    }
-                    if (child.name === "Flower1") {
-                        this.eighth = GSAP.to(child.scale, {
-                            x: 1,
-                            y: 1,
-                            z: 1,
-                            ease: "back.out(2)",
-                            duration: 0.3,
-                        });
-                    }
-                    if (child.name === "Flower2") {
-                        this.ninth = GSAP.to(child.scale, {
                             x: 1,
                             y: 1,
                             z: 1,
