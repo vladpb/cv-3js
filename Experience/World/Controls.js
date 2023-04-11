@@ -132,21 +132,17 @@ export default class Controls {
                     .to(
                         this.room.position,
                         {
-                            x: () => {
-                                return 1;
-                            },
-                            z: () => {
-                                return this.sizes.height * 0.0032;
-                            },
+                            x: -2,
+                            y: 2.5,
                         },
                         "same"
                     )
                     .to(
                         this.room.scale,
                         {
-                            x: 0.4,
-                            y: 0.4,
-                            z: 0.4,
+                            x: 0.6,
+                            y: 0.6,
+                            z: 0.6,
                         },
                         "same"
                     )
@@ -168,10 +164,25 @@ export default class Controls {
                         scrub: 0.6,
                         invalidateOnRefresh: true,
                     },
-                }).to(this.camera.orthographicCamera.position, {
-                    y: 1.5,
-                    x: -4.1,
-                });
+                }).to(
+                    this.room.scale,
+                    {
+                        x: 0.9,
+                        y: 0.9,
+                        z: 0.9,
+                    },
+                    "same"
+                    )
+                .to(
+                    this.room.position, {
+                        x: 3,
+                        z: -0.5,
+                    },
+                )
+                //.to(this.camera.orthographicCamera.position, {
+                //    x: -5,
+                //    y: 1.5,
+                //});
             },
 
             // Mobile
@@ -213,9 +224,9 @@ export default class Controls {
                     .to(
                         this.room.scale,
                         {
-                            x: 0.25,
-                            y: 0.25,
-                            z: 0.25,
+                            x: 0.5,
+                            y: 0.5,
+                            z: 0.5,
                         },
                         "same"
                     )
@@ -378,7 +389,7 @@ export default class Controls {
                             x: 1,
                             y: 1,
                             z: 1,
-                            duration: 0.3,
+                            duration: 0.7,
                         });
                     }
                     if (child.name === "pa1") {
@@ -412,7 +423,7 @@ export default class Controls {
                             x: 1,
                             y: 1,
                             z: 1,
-                            duration: 0.3,
+                            duration: 0.5,
                         });
                     }
                     if (child.name === "cutiepostala") {
@@ -421,7 +432,7 @@ export default class Controls {
                             y: 1,
                             z: 1,
                             ease: "back.out(2)",
-                            duration: 0.3,
+                            duration: 0.5,
                         });
                     }
                 });
@@ -431,9 +442,6 @@ export default class Controls {
                 this.secondPartTimeline.add(this.fourth, "-=0.2");
                 this.secondPartTimeline.add(this.fifth, "-=0.2");
                 this.secondPartTimeline.add(this.sixth, "-=0.2");
-                this.secondPartTimeline.add(this.seventh, "-=0.2");
-                this.secondPartTimeline.add(this.eighth);
-                this.secondPartTimeline.add(this.ninth, "-=0.1");
             },
         });
     }

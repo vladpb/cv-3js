@@ -55,9 +55,9 @@ export default class Preloader extends EventEmitter {
         if(this.device === "desktop") {
         this.timeline
         .to(this.roomChildren.cube.scale, {
-            x: 1.4,
-            y: 1.4,
-            z: 1.4,
+            x: 1,
+            y: 1,
+            z: 1,
             ease: "back.out(2.5)",
             duration: 0.7,
         })
@@ -70,9 +70,9 @@ export default class Preloader extends EventEmitter {
     }else {
         this.timeline
         .to(this.roomChildren.cube.scale, {
-            x: 1.4,
-            y: 1.4,
-            z: 1.4,
+            x: 1,
+            y: 1,
+            z: 1,
             duration: 0.7,
             ease: "back.out(2.5)",
         })
@@ -179,8 +179,8 @@ export default class Preloader extends EventEmitter {
                 x: 0,
                 y: 0,
                 z: 0,
-                duration: 1,
-                ease: "power2.in(0.5)",
+                duration: 0.2,
+                ease: "power2.inOut(1.5)",
             },
             "introtext"
             )
@@ -247,7 +247,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.4,
             }
         )
         .to(
@@ -257,7 +257,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.4,
             }
         )
         .to(
@@ -267,7 +267,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -277,7 +277,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -287,7 +287,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -297,7 +297,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -307,7 +307,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -317,7 +317,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.4,
             }
         )
         .to(
@@ -327,7 +327,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.2,
             }
         )
         .to(
@@ -337,7 +337,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.2,
             }
         )
         .to(
@@ -347,7 +347,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -357,7 +357,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.2,
             }
         )
         .to(
@@ -367,7 +367,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.2,
             }
         )
         .to(
@@ -377,7 +377,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -387,7 +387,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -397,7 +397,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.2,
             }
         )
         .to(
@@ -407,7 +407,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -417,7 +417,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.2,
             }
         )
         .to(
@@ -427,7 +427,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -437,7 +437,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.2,
             }
         )
         .to(
@@ -447,7 +447,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -457,7 +457,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.2,
             }
         )
         .to(
@@ -467,7 +467,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.2,
             }
         )
         .to(
@@ -477,7 +477,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -487,7 +487,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.3,
             }
         )
         .to(
@@ -497,7 +497,7 @@ export default class Preloader extends EventEmitter {
                 y: 1,
                 z: 1,
                 ease: "back.out(1.7)",
-                duration: 0.5,
+                duration: 0.4,
             }
         )
         .to(
@@ -505,7 +505,7 @@ export default class Preloader extends EventEmitter {
             {
                 y: 3 * Math.PI / 3 + 1,
                 ease: "power2.out",
-                duration: 1,
+                duration: 0.7,
             },
         )
         

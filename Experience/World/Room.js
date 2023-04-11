@@ -91,16 +91,11 @@ export default class Room {
             
         const width = 0.36;
         const height = 0.18;
-        const intensity = 3;
+        const intensity = 1.5;
         const rectLight = new THREE.RectAreaLight( 0xc33af8, intensity,  width, height );
         rectLight.position.set( -1.21 , 1.2 , -0.7 );
         rectLight.rotation.y = -Math.PI / 1.4; 
         this.actualRoom.add( rectLight )
-
-        const rectLight2 = new THREE.RectAreaLight( 0xaf2bfa, intensity,  width, height );
-        rectLight2.position.set( -0.5 , 1.2 , -1.4 );
-        rectLight2.rotation.y = Math.PI / 0.82; 
-        this.actualRoom.add( rectLight2 )
         
         this.roomChildren['rectLight'] = rectLight;
 
