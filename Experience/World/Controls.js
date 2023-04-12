@@ -17,6 +17,9 @@ export default class Controls {
             if (child.type === "RectAreaLight") {
                 this.rectLight = child;
             }
+            if (child.type === "PointLight") {
+                this.pointLight = child;
+            }
         });
         this.circleFirst = this.experience.world.floor.circleFirst;
         this.circleSecond = this.experience.world.floor.circleSecond;
@@ -94,8 +97,9 @@ export default class Controls {
                 console.log("fired desktop");
 
                 this.room.scale.set(0.6, 0.6, 0.6);
-                this.rectLight.width = 0.5;
-                this.rectLight.height = 0.7;
+                this.rectLight.width = 0.8;
+                this.rectLight.height = 0.2;
+                this.rectLight.intensity = 3;
                 this.camera.orthographicCamera.position.set(0, 6.5, 10);
                 this.room.position.set(0, 0, 0);
                 // First section -----------------------------------------
@@ -108,7 +112,7 @@ export default class Controls {
                         // markers: true,
                         invalidateOnRefresh: true,
                     },
-                });
+                })
                 this.firstMoveTimeline.fromTo(
                     this.room.position,
                     { x: 0, y: 0, z: 0 },
@@ -116,6 +120,10 @@ export default class Controls {
                         x: () => {
                             return this.sizes.width * 0.0014;
                         },
+                    }
+                ).to(
+                    this.pointLight, {
+                        intensity: 0.8,
                     }
                 );
 
@@ -133,24 +141,16 @@ export default class Controls {
                         this.room.position,
                         {
                             x: -2,
-                            y: 2.5,
+                            z: 1.5,
                         },
                         "same"
                     )
                     .to(
                         this.room.scale,
                         {
-                            x: 0.6,
-                            y: 0.6,
-                            z: 0.6,
-                        },
-                        "same"
-                    )
-                    .to(
-                        this.rectLight,
-                        {
-                            width: 0.5 * 4,
-                            height: 0.7 * 4,
+                            x: 0.65,
+                            y: 0.65,
+                            z: 0.65,
                         },
                         "same"
                     );
@@ -179,10 +179,6 @@ export default class Controls {
                         z: -0.5,
                     },
                 )
-                //.to(this.camera.orthographicCamera.position, {
-                //    x: -5,
-                //    y: 1.5,
-                //});
             },
 
             // Mobile
@@ -190,10 +186,11 @@ export default class Controls {
                 console.log("fired mobile");
 
                 // Resets
-                this.room.scale.set(0.35, 0.35, 0.35);
+                this.room.scale.set(0.4, 0.4, 0.4);
                 this.room.position.set(0, 0, 0);
-                this.rectLight.width = 0.3;
-                this.rectLight.height = 0.4;
+                this.rectLight.width = 0.75;
+                this.rectLight.height = 0.18;
+                this.rectLight.intensity = 3;
                 this.camera.orthographicCamera.position.set(0, 6.5, 10);
 
                 // First section -----------------------------------------
@@ -205,10 +202,19 @@ export default class Controls {
                         scrub: 0.6,
                         // invalidateOnRefresh: true,
                     },
-                }).to(this.room.scale, {
-                    x: 0.1,
-                    y: 0.1,
-                    z: 0.1,
+                })
+                .to(
+                    this.rectLight,
+                    {
+                        width: 0,
+                        height: 0,
+                    },
+                    "same"
+                )
+                .to(this.room.scale, {
+                    x: 0,
+                    y: 0,
+                    z: 0,
                 });
 
                 // Second section -----------------------------------------
@@ -229,21 +235,17 @@ export default class Controls {
                             z: 0.5,
                         },
                         "same"
-                    )
-                    .to(
+                    ).to(
                         this.rectLight,
                         {
-                            width: 0.3 * 3.4,
-                            height: 0.4 * 3.4,
+                            width: 0.75,
+                            height: 0.18,
                         },
                         "same"
-                    )
-                    .to(
-                        this.room.position,
-                        {
-                            x: 1.5,
-                        },
-                        "same"
+                    ).to(
+                        this.pointLight, {
+                            intensity: 0.8,
+                        }
                     );
 
                 // Third section -----------------------------------------
@@ -256,7 +258,8 @@ export default class Controls {
                         invalidateOnRefresh: true,
                     },
                 }).to(this.room.position, {
-                    z: -4.5,
+                    x: 1,
+                    z: -2,
                 });
             },
 
@@ -389,7 +392,7 @@ export default class Controls {
                             x: 1,
                             y: 1,
                             z: 1,
-                            duration: 0.7,
+                            duration: 1,
                         });
                     }
                     if (child.name === "pa1") {
@@ -397,7 +400,7 @@ export default class Controls {
                             x: 1,
                             y: 1,
                             z: 1,
-                            duration: 0.3,
+                            duration: 0.5,
                         });
                     }
                     if (child.name === "pa2") {
@@ -406,7 +409,7 @@ export default class Controls {
                             y: 1,
                             z: 1,
                             ease: "back.out(2)",
-                            duration: 0.3,
+                            duration: 0.5,
                         });
                     }
                     if (child.name === "pa3") {
@@ -415,7 +418,7 @@ export default class Controls {
                             y: 1,
                             z: 1,
                             ease: "back.out(2)",
-                            duration: 0.3,
+                            duration: 0.5,
                         });
                     }
                     if (child.name === "floare") {
@@ -432,16 +435,16 @@ export default class Controls {
                             y: 1,
                             z: 1,
                             ease: "back.out(2)",
-                            duration: 0.5,
+                            duration: 0.7,
                         });
                     }
                 });
                 this.secondPartTimeline.add(this.first);
                 this.secondPartTimeline.add(this.second);
                 this.secondPartTimeline.add(this.third);
-                this.secondPartTimeline.add(this.fourth, "-=0.2");
-                this.secondPartTimeline.add(this.fifth, "-=0.2");
-                this.secondPartTimeline.add(this.sixth, "-=0.2");
+                this.secondPartTimeline.add(this.fourth);
+                this.secondPartTimeline.add(this.fifth);
+                this.secondPartTimeline.add(this.sixth);
             },
         });
     }

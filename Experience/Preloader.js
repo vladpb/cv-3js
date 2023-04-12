@@ -203,24 +203,6 @@ export default class Preloader extends EventEmitter {
             "introtext"
         )
         .to(
-            ".first-sub .animatedis",
-            {
-                yPercent: 0,
-                stagger: 0.07,
-                ease: "back.out(1.7)",
-            },
-            "introtext"
-        )
-        .to(
-            ".second-sub .animatedis",
-            {
-                yPercent: 0,
-                stagger: 0.07,
-                ease: "back.out(1.7)",
-            },
-            "introtext"
-        )
-        .to(
             this.roomChildren.parchet.scale,
             {
                 x: 1,
@@ -579,7 +561,7 @@ export default class Preloader extends EventEmitter {
         if(this.device === "desktop") {
             this.room.scale.set(0.6, 0.6, 0.6)
         }else {
-            this.room.scale.set(0.35, 0.35, 0.35);
+            this.room.scale.set(0.4, 0.4, 0.4);
         }
 }
 

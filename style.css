@@ -26,9 +26,9 @@ svg{
   /* Light Theme Variables */
   --color-text-light: #333332;
   --color-background-light: #FAF4E5;
-  --color-pink-light: #e5a1aa;
-  --color-green-light: #7AD0AC;
-  --color-blue-light: #8395CD;
+  --color-pink-light: #6150a4;
+  --color-green-light: #ac47cc;
+  --color-blue-light: #748eba;
 
   /* Dark Theme Variables */
   --color-text-dark: #FAF4E5;
@@ -400,7 +400,7 @@ svg{
 }
 
 .hero-main-title{
-  font-size: 64px;
+  font-size: 58px;
   color: var(--color-text);
 }
 

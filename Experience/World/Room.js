@@ -53,8 +53,23 @@ export default class Room {
                 child.children[4].material.ior = 3;
                 child.children[4].material.transmission = 1;
                 child.children[4].material.opacity = 0.1;
+            
+                child.children[5].material = new THREE.MeshPhysicalMaterial();
+                child.children[5].material.roughness = 0;
+                child.children[5].material.color.set(0x4e4a4e);
+                child.children[5].material.ior = 3;
+                child.children[5].material.transmission = 1;
+                child.children[5].material.opacity = 0.1;
             };
             
+            if(child.name === "Lampa") {
+                child.children[0].material = new THREE.MeshPhysicalMaterial();
+                child.children[0].material.color.set(0xb9b9b9);
+                child.children[0].material.transmission = 1;
+                child.children[0].material.opacity = 1;
+                child.children[0].material.roughness = 0.5;
+                child.children[0].material.ior = 1.5;
+            };
 
             if(child.name === "monitor1") {
                 child.children[2].material = new THREE.MeshBasicMaterial({
@@ -79,9 +94,6 @@ export default class Room {
 
             //console.log(child);
 
-
-
-
             this.scene.add(this.actualRoom);
             this.actualRoom.scale.set(0.6, 0.6, 0.6);
         });
@@ -89,15 +101,21 @@ export default class Room {
 
     setLights() {
             
-        const width = 0.36;
+        const width = 0.75;
         const height = 0.18;
-        const intensity = 1.5;
+        const intensity = 0;
         const rectLight = new THREE.RectAreaLight( 0xc33af8, intensity,  width, height );
-        rectLight.position.set( -1.21 , 1.2 , -0.7 );
-        rectLight.rotation.y = -Math.PI / 1.4; 
+        rectLight.position.set( -0.9, 1.15 , -0.95 );
+        rectLight.rotation.y = -Math.PI / 1.3; 
         this.actualRoom.add( rectLight )
         
         this.roomChildren['rectLight'] = rectLight;
+
+        const pointLight = new THREE.PointLight( 0xc33af8, intensity );
+        pointLight.position.set(2.17, 0.8, 0.03)
+        this.actualRoom.add( pointLight ) 
+
+        this.roomChildren['pointLight'] = pointLight;
 
         this.scene.add(this.actualRoom);
             this.actualRoom.scale.set(0.6, 0.6, 0.6);
@@ -105,13 +123,6 @@ export default class Room {
         //const rectLightHelper = new RectAreaLightHelper( rectLight );
         //rectLight.add( rectLightHelper );
     }
-
-    /* Animatie
-    setAnimation() {
-        this.mixer = new THREE.AnimationMixer(this.actualRoom);
-        console.log(this.room);
-    }
-    */
 
     onMouseMove() {
         window.addEventListener("mousemove", (e) => {
@@ -132,6 +143,5 @@ export default class Room {
 
         this.actualRoom.rotation.y = this.lerp.current;
 
-        //this.mixer.update(this.time.delta * 0.0009);
     }
 }
